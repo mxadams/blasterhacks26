@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://cvbbgys1ysugq"]
+
+[ext_resource type="PackedScene" uid="uid://3p4onuhm5oms" path="res://scenes/player.tscn" id="1_uwrxv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mwb40"]
+normal = Vector2(1, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yqjtg"]
+size = Vector2(256, 1080)
+
+[sub_resource type="MeshTexture" id="MeshTexture_uwrxv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_80nbo"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lnu2h"]
+size = Vector2(256, 1080)
+
+[sub_resource type="MeshTexture" id="MeshTexture_yqjtg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e2o6t"]
+normal = Vector2(0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_iywne"]
+size = Vector2(1920, 128)
+
+[sub_resource type="MeshTexture" id="MeshTexture_lnu2h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_p57ef"]
+size = Vector2(1920, 128)
+
+[sub_resource type="MeshTexture" id="MeshTexture_lbhrr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(128, 512)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lbhrr"]
+size = Vector2(128, 512)
+
+[sub_resource type="MeshTexture" id="MeshTexture_iywne"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_p57ef"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_u5sy4"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_gee14"]
+
+[node name="Game" type="Node" unique_id=146275282]
+
+[node name="World2D" type="Node2D" parent="." unique_id=1620807987]
+
+[node name="WorldBoundaries" type="Node2D" parent="World2D" unique_id=427137114]
+
+[node name="LeftBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1693929916]
+position = Vector2(192, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/LeftBoundary" unique_id=1890711280]
+shape = SubResource("WorldBoundaryShape2D_mwb40")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/WorldBoundaries/LeftBoundary" unique_id=1599960728]
+position = Vector2(-128, 0)
+mesh = SubResource("QuadMesh_yqjtg")
+texture = SubResource("MeshTexture_uwrxv")
+
+[node name="RightBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1491809735]
+position = Vector2(1728, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/RightBoundary" unique_id=1443445140]
+shape = SubResource("WorldBoundaryShape2D_80nbo")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/WorldBoundaries/RightBoundary" unique_id=219680618]
+position = Vector2(128, 0)
+mesh = SubResource("QuadMesh_lnu2h")
+texture = SubResource("MeshTexture_yqjtg")
+
+[node name="TopBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1906896732]
+position = Vector2(960, 108)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/TopBoundary" unique_id=278938599]
+shape = SubResource("WorldBoundaryShape2D_e2o6t")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/WorldBoundaries/TopBoundary" unique_id=713654431]
+position = Vector2(0, -64)
+mesh = SubResource("QuadMesh_iywne")
+texture = SubResource("MeshTexture_lnu2h")
+
+[node name="BottomBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1485238637]
+position = Vector2(960, 972)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/BottomBoundary" unique_id=2034144866]
+shape = SubResource("WorldBoundaryShape2D_feb5d")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/WorldBoundaries/BottomBoundary" unique_id=1437122388]
+position = Vector2(0, 64)
+mesh = SubResource("QuadMesh_p57ef")
+texture = SubResource("MeshTexture_lbhrr")
+
+[node name="Islands" type="Node2D" parent="World2D" unique_id=1751236422]
+
+[node name="Countertop1" type="StaticBody2D" parent="World2D/Islands" unique_id=938574283]
+position = Vector2(480, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/Islands/Countertop1" unique_id=2000791019]
+shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/Islands/Countertop1" unique_id=1458232409]
+mesh = SubResource("QuadMesh_lbhrr")
+texture = SubResource("MeshTexture_iywne")
+
+[node name="Countertop2" type="StaticBody2D" parent="World2D/Islands" unique_id=1941514330]
+position = Vector2(800, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/Islands/Countertop2" unique_id=118819315]
+shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/Islands/Countertop2" unique_id=988352539]
+mesh = SubResource("QuadMesh_lbhrr")
+texture = SubResource("MeshTexture_p57ef")
+
+[node name="Countertop3" type="StaticBody2D" parent="World2D/Islands" unique_id=1184871799]
+position = Vector2(1120, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/Islands/Countertop3" unique_id=1293672982]
+shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/Islands/Countertop3" unique_id=764764780]
+mesh = SubResource("QuadMesh_lbhrr")
+texture = SubResource("MeshTexture_u5sy4")
+
+[node name="Countertop4" type="StaticBody2D" parent="World2D/Islands" unique_id=408880298]
+position = Vector2(1440, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/Islands/Countertop4" unique_id=1000394016]
+shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/Islands/Countertop4" unique_id=474688053]
+mesh = SubResource("QuadMesh_lbhrr")
+texture = SubResource("MeshTexture_gee14")
+
+[node name="Player" parent="World2D" unique_id=459094187 instance=ExtResource("1_uwrxv")]
+position = Vector2(960, 540)
+
+[node name="Machines" type="Node2D" parent="World2D" unique_id=1406392781]
