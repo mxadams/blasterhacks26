@@ -1,95 +1,42 @@
 [gd_scene format=3 uid="uid://cvbbgys1ysugq"]
 
-[ext_resource type="StyleBox" uid="uid://bhtf4x8imewmh" path="res://terminal_normal.tres" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://dkn37vf015br8" path="res://terminal_panel_container.gd" id="2_e2o6t"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mwb40"]
+normal = Vector2(1, 0)
 
-[sub_resource type="ImageTexture" id="ImageTexture_e2o6t"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_80nbo"]
+normal = Vector2(-1, 0)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80nbo"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e2o6t"]
+normal = Vector2(0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2o6t"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_feb5d"]
+[node name="Game" type="Node" unique_id=146275282]
 
-[node name="Control" type="Control" unique_id=1993364844]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="World2D" type="Node2D" parent="." unique_id=1620807987]
 
-[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=280597942]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
-theme_override_icons/grabber = SubResource("ImageTexture_e2o6t")
+[node name="WorldBoundaries" type="Node2D" parent="World2D" unique_id=427137114]
 
-[node name="ViewportPanelContainer" type="PanelContainer" parent="HSplitContainer" unique_id=151842094]
-layout_mode = 2
+[node name="LeftBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1693929916]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="HSplitContainer/ViewportPanelContainer" unique_id=720100364]
-layout_mode = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/LeftBoundary" unique_id=1890711280]
+shape = SubResource("WorldBoundaryShape2D_mwb40")
 
-[node name="SubViewport" type="SubViewport" parent="HSplitContainer/ViewportPanelContainer/SubViewportContainer" unique_id=1373893609]
-handle_input_locally = false
-size = Vector2i(1080, 1080)
-render_target_update_mode = 4
+[node name="RightBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1491809735]
 
-[node name="GameplayRoot" type="Node2D" parent="HSplitContainer/ViewportPanelContainer/SubViewportContainer/SubViewport" unique_id=838907210]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/RightBoundary" unique_id=1443445140]
+position = Vector2(1920, 0)
+shape = SubResource("WorldBoundaryShape2D_80nbo")
 
-[node name="TerminalPanelContainer" type="PanelContainer" parent="HSplitContainer" unique_id=571975352]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("1_80nbo")
-script = ExtResource("2_e2o6t")
+[node name="TopBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1906896732]
 
-[node name="TerminalMarginContainer" type="MarginContainer" parent="HSplitContainer/TerminalPanelContainer" unique_id=879200343]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/TopBoundary" unique_id=278938599]
+shape = SubResource("WorldBoundaryShape2D_e2o6t")
 
-[node name="TerminalVBoxContainer" type="VBoxContainer" parent="HSplitContainer/TerminalPanelContainer/TerminalMarginContainer" unique_id=626884398]
-layout_mode = 2
-theme_override_constants/separation = 16
-alignment = 2
+[node name="BottomBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1485238637]
 
-[node name="CommandHistoryRichTextLabel" type="RichTextLabel" parent="HSplitContainer/TerminalPanelContainer/TerminalMarginContainer/TerminalVBoxContainer" unique_id=931235169]
-layout_mode = 2
-size_flags_vertical = 3
-text = "In the future, everyhting is controlled by Agentic AI through command line interfaces.
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/BottomBoundary" unique_id=2034144866]
+position = Vector2(0, 1080)
+shape = SubResource("WorldBoundaryShape2D_feb5d")
 
-The nearest Earth-like planet has been landed on by the Earth's various superpowers.
-
-You forgot to pack your laptop on the spaceship so you nation is without its agentic military command model.
-
-The only way you wont get fired is if you are able to use the military CLI to lead your nation to victory.
-
-Type \"help\" to start."
-scroll_following = true
-vertical_alignment = 2
-
-[node name="CommandPromptPanelContainer" type="PanelContainer" parent="HSplitContainer/TerminalPanelContainer/TerminalMarginContainer/TerminalVBoxContainer" unique_id=620403711]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("1_80nbo")
-
-[node name="CommandPromptMarginContainer" type="MarginContainer" parent="HSplitContainer/TerminalPanelContainer/TerminalMarginContainer/TerminalVBoxContainer/CommandPromptPanelContainer" unique_id=2009531857]
-layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="CommandPromptLineEdit" type="LineEdit" parent="HSplitContainer/TerminalPanelContainer/TerminalMarginContainer/TerminalVBoxContainer/CommandPromptPanelContainer/CommandPromptMarginContainer" unique_id=176096917]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_80nbo")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_e2o6t")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_feb5d")
-placeholder_text = "Enter a Command"
-caret_blink = true
+[node name="Node2D" type="Node2D" parent="World2D" unique_id=1751236422]
