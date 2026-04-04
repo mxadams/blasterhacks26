@@ -40,6 +40,8 @@ handle_input_locally = false
 size = Vector2i(1080, 1080)
 render_target_update_mode = 4
 
+[node name="GameplayRoot" type="Node2D" parent="HSplitContainer/ViewportPanelContainer/SubViewportContainer/SubViewport" unique_id=838907210]
+
 [node name="TerminalPanelContainer" type="PanelContainer" parent="HSplitContainer" unique_id=571975352]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -61,8 +63,15 @@ alignment = 2
 [node name="CommandHistoryRichTextLabel" type="RichTextLabel" parent="HSplitContainer/TerminalPanelContainer/TerminalMarginContainer/TerminalVBoxContainer" unique_id=931235169]
 layout_mode = 2
 size_flags_vertical = 3
-text = "You are an agentic AI model.
-You have been given control of your nation's military."
+text = "In the future, everyhting is controlled by Agentic AI through command line interfaces.
+
+The nearest Earth-like planet has been landed on by the Earth's various superpowers.
+
+You forgot to pack your laptop on the spaceship so you nation is without its agentic military command model.
+
+The only way you wont get fired is if you are able to use the military CLI to lead your nation to victory.
+
+Type \"help\" to start."
 scroll_following = true
 vertical_alignment = 2
 
