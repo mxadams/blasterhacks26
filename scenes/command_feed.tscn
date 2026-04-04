@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ru2x753o5p38"]
+
+[ext_resource type="Script" uid="uid://b0f3v2r1y5wxf" path="res://scripts/command_feed.gd" id="1_60ngb"]
+[ext_resource type="Texture2D" uid="uid://cxpfpiutnlcfe" path="res://icon.svg" id="2_gnlnk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1bsx"]
+radius = 128.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_60ngb"]
+
+[node name="CommandFeed" type="Area2D" unique_id=1777718723]
+script = ExtResource("1_60ngb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1749381014]
+shape = SubResource("CircleShape2D_u1bsx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1404553355]
+texture = ExtResource("2_gnlnk")
+
+[node name="Timer" type="Timer" parent="." unique_id=15148212]
+
+[node name="Control" type="Control" parent="." unique_id=1836460316]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=567984038]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -30.708336
+offset_right = 63.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_60ngb")
+
+[node name="Label" type="Label" parent="Control/PanelContainer" unique_id=600144904]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "Placeholder Text"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
