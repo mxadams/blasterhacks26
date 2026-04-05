@@ -11,11 +11,17 @@ func _ready() -> void:
 
 func _process(delta):
 	if player_node and player_node.carrying_index != -1 and self.carrying_index == -1:
-		label.text = "Cache:\nStore " + Global.COMPONENT.MAP[player_node.carrying_index]
+		var text = Global.COMPONENT.MAP[player_node.carrying_index]
+		var color = Global.COMPONENT.COLORS[player_node.carrying_index]
+		label.text = "[color=%s]Cache:\nStore\n%s[/color]" % [color, text]
 	elif player_node and player_node.carrying_index == -1 and self.carrying_index != -1:
-		label.text = "Cache:\nRetreive " + Global.COMPONENT.MAP[self.carrying_index]
+		var text = Global.COMPONENT.MAP[self.carrying_index]
+		var color = Global.COMPONENT.COLORS[self.carrying_index]
+		label.text = "[color=%s]Cache:\nRetreive\n%s[/color]" % [color, text]
 	else:
-		label.text = "Cache:\n" + Global.COMPONENT.MAP[self.carrying_index]
+		var text = Global.COMPONENT.MAP[self.carrying_index]
+		var color = Global.COMPONENT.COLORS[self.carrying_index]
+		label.text = "[color=%s]Cache:\n%s[/color]" % [color, text]
 	_handle_player_interact()
 
 func _on_body_entered(body: Node) -> void:

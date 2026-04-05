@@ -36,6 +36,22 @@ class ComponentData:
 		14: "[net data]",
 		15: "[io data]",
 	}
+	const COLORS := {
+		ERROR_INDEX: "ffffff",
+		-1: "ffffff",
+		0: "#b21818",
+		1: "#b26818",
+		2: "#18b218",
+		3: "#18b2b2",
+		4: "#1818b2",
+		5: "#b218b2",
+		10: "#ff5454",
+		11: "#ffff54",
+		12: "#54ff54",
+		13: "#54ffff",
+		14: "#5454ff",
+		15: "#ff54ff",
+	}
 	const SPRITES := {
 		0: MACHINE_BIN,
 		1: MACHINE_FLAGS,
@@ -50,7 +66,7 @@ class GameRuleData:
 	var difficulty_level: int = 0
 	var max_command_length: int = 1
 	var score: int = 0
-	const COMMAND_SPAWN_TIME: float = 1.0 # seconds
-	const DIFFICULTY_INCREASE_TIME: float = 2.0 # seconds
-	const PLAYER_SPEED_INCREASE: float = 0.005 * Global.PLAYER.MOVE_SPEED_BASE
+	const COMMAND_SPAWN_TIME: float = 10.0 # seconds
+	const DIFFICULTY_INCREASE_TIME: float = 20.0 # seconds
+	const PLAYER_SPEED_INCREASE: float = 0.004 * Global.PLAYER.MOVE_SPEED_BASE
 var GAMERULE := GameRuleData.new()

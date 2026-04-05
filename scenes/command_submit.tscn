@@ -21,39 +21,33 @@ shape = SubResource("CircleShape2D_ittqh")
 texture = ExtResource("2_h5m1m")
 
 [node name="Control" type="Control" parent="." unique_id=2073191326]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1619111210]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -89.0
-offset_right = 89.0
-offset_bottom = 30.708336
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_guj83")
 
-[node name="Label" type="Label" parent="Control/PanelContainer" unique_id=541620427]
+[node name="Label" type="RichTextLabel" parent="Control/PanelContainer" unique_id=541620427]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 22
-text = "Placeholder Text"
+bbcode_enabled = true
+text = "Placeholder Text text text"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1074881136]
 

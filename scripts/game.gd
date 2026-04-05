@@ -13,10 +13,14 @@ func _ready():
 	timer.start()
 
 func _process(delta):
-	label_left.text = "Difficulty: " + str(Global.GAMERULE.difficulty_level)
-	#label_left.text += "\nMove Speed " + str(Global.PLAYER.move_speed/Global.PLAYER.MOVE_SPEED_BASE)
-	#label_left.text += "\nMax Command Length " + str(Global.GAMERULE.max_command_length)
-	label_right.text = "Score: " + str(Global.GAMERULE.score)
+	#label_left.text = "Difficulty: " + str(Global.GAMERULE.difficulty_level) + "\n"
+	label_left.text = "Score: " + str(Global.GAMERULE.score)
+	label_right.text = "Welcome to the world's first modular, AI-first operating system"
+	label_right.text += "\nYou are the agent that routes terminal command components from the parsing agent to the handler agents"
+	label_right.text += "\nNo it isn't overengineered"
+	label_right.text += "\nKeep the queue of waiting commands below 10, Arrow keys to move, Space to interact"
+	if len(Global.SUBMIT_QUEUE) > 10:
+		print("GAME OVER")
 
 func _on_timer_timeout():
 	Global.GAMERULE.difficulty_level += 1

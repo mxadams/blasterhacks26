@@ -10,25 +10,29 @@ func _ready() -> void:
 
 func _process(delta):
 	label.text = ""
-	if len(Global.SUBMIT_QUEUE) < 3:
+	if len(Global.SUBMIT_QUEUE) < 2:
 		for command in Global.SUBMIT_QUEUE:
-			var command_text := " "
+			var parts = []
 			for arg in command:
-				command_text += Global.COMPONENT.MAP[arg] + " "
+				var text = Global.COMPONENT.MAP[arg]
+				var color = Global.COMPONENT.COLORS[arg]
+				parts.append("[color=%s]%s[/color]" % [color, text])
 			if label.text:
-				label.text += "\n" + command_text
+				label.text += "\n" + " ".join(parts)
 			else:
-				label.text = command_text
+				label.text = " ".join(parts)
 	else:
-		for i in range(2):
-			var command_text := " "
+		for i in range(1):
+			var parts = []
 			for arg in Global.SUBMIT_QUEUE[i]:
-				command_text += Global.COMPONENT.MAP[arg] + " "
+				var text = Global.COMPONENT.MAP[arg]
+				var color = Global.COMPONENT.COLORS[arg]
+				parts.append("[color=%s]%s[/color]" % [color, text])
 			if label.text:
-				label.text += "\n" + command_text
+				label.text += "\n" + " ".join(parts)
 			else:
-				label.text = command_text
-		label.text += "\n" + str(len(Global.SUBMIT_QUEUE)-2) + " more"
+				label.text = " ".join(parts)
+		label.text += "\n" + str(len(Global.SUBMIT_QUEUE)-1) + " more"
 	_handle_player_interact()
 
 func _on_body_entered(body: Node) -> void:
