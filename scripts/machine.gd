@@ -1,12 +1,13 @@
 extends Area2D
+class_name Machine
 
-@onready var label: Label = $Label
+@onready var label = $Control/PanelContainer/Label
 @onready var timer: Timer = $Timer
 
-@export var input_index: int = 0
-@export var output_index: int = 10
+@export var input_index: int = -1
+@export var output_index: int = -1
 @export var cook_time: float = 4.0
-@export var error_probability: float = 0.2
+@export var error_probability: float = 0.1
 
 enum State {EMPTY, COOKING, DONE, ERROR}
 
@@ -56,7 +57,8 @@ func _handle_player_interact():
 			label.text = "Pick Up " + Global.COMPONENT.MAP[Global.COMPONENT.ERROR_INDEX]
 			if Input.is_action_just_pressed("interact"):
 				player_node.carrying_index = Global.COMPONENT.ERROR_INDEX
-				state = State.EMPTY
+				state = State.COOKING
+				timer.start()
 		else:
 			label.text = Global.COMPONENT.MAP[Global.COMPONENT.ERROR_INDEX] + " Ready"
 

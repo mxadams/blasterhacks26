@@ -4,7 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://cxpfpiutnlcfe" path="res://icon.svg" id="2_448ux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4f25"]
-radius = 128.0
+radius = 100.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_73k52"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73k52"]
+size = Vector2(120, 120)
 
 [node name="Machine" type="Area2D" unique_id=307354090]
 script = ExtResource("1_73k52")
@@ -15,24 +20,44 @@ shape = SubResource("CircleShape2D_i4f25")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1996330994]
 texture = ExtResource("2_448ux")
 
-[node name="Label" type="Label" parent="." unique_id=180460552]
+[node name="Timer" type="Timer" parent="." unique_id=1568130455]
+
+[node name="Control" type="Control" parent="." unique_id=1977477241]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1237235662]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 0.5
-offset_bottom = 11.5
+offset_left = -89.0
+offset_top = -20.0
+offset_right = 89.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_73k52")
+
+[node name="Label" type="Label" parent="Control/PanelContainer" unique_id=180460552]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 22
 text = "Placeholder Text"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="." unique_id=1568130455]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1706199285]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=971193631]
+shape = SubResource("RectangleShape2D_73k52")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

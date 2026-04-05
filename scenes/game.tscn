@@ -1,168 +1,85 @@
-[gd_scene format=3 uid="uid://cvbbgys1ysugq"]
+[gd_scene format=4 uid="uid://cvbbgys1ysugq"]
 
 [ext_resource type="Script" uid="uid://lf7oc6x0ugbk" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://3p4onuhm5oms" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dtrebi3nc5gry" path="res://scenes/machine.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ru2x753o5p38" path="res://scenes/command_feed.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cphf5avfpponk" path="res://scenes/command_submit.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://b55c03lsjoqtt" path="res://scenes/cache_storage.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://grkes6inigab" path="res://scenes/wall_tile.tscn" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://caga38ipsubr3" path="res://scripts/tile_map_layer.gd" id="7_gee14"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mwb40"]
-normal = Vector2(1, 0)
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gee14"]
+scenes/1/scene = ExtResource("2_yqjtg")
+scenes/2/scene = ExtResource("6_p57ef")
+scenes/3/scene = ExtResource("5_iywne")
+scenes/4/scene = ExtResource("3_lnu2h")
+scenes/5/scene = ExtResource("6_u5sy4")
 
-[sub_resource type="QuadMesh" id="QuadMesh_yqjtg"]
-size = Vector2(256, 1080)
-
-[sub_resource type="MeshTexture" id="MeshTexture_uwrxv"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_80nbo"]
-normal = Vector2(-1, 0)
-
-[sub_resource type="QuadMesh" id="QuadMesh_lnu2h"]
-size = Vector2(256, 1080)
-
-[sub_resource type="MeshTexture" id="MeshTexture_yqjtg"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_e2o6t"]
-normal = Vector2(0, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_iywne"]
-size = Vector2(1920, 128)
-
-[sub_resource type="MeshTexture" id="MeshTexture_lnu2h"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_feb5d"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_p57ef"]
-size = Vector2(1920, 128)
-
-[sub_resource type="MeshTexture" id="MeshTexture_lbhrr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
-size = Vector2(128, 512)
-
-[sub_resource type="QuadMesh" id="QuadMesh_lbhrr"]
-size = Vector2(128, 512)
-
-[sub_resource type="MeshTexture" id="MeshTexture_iywne"]
-
-[sub_resource type="MeshTexture" id="MeshTexture_p57ef"]
-
-[sub_resource type="MeshTexture" id="MeshTexture_u5sy4"]
-
-[sub_resource type="MeshTexture" id="MeshTexture_gee14"]
+[sub_resource type="TileSet" id="TileSet_0tnpc"]
+tile_size = Vector2i(120, 120)
+sources/0 = SubResource("TileSetScenesCollectionSource_gee14")
 
 [node name="Game" type="Node" unique_id=146275282]
 script = ExtResource("1_lbhrr")
 
 [node name="World2D" type="Node2D" parent="." unique_id=1620807987]
 
-[node name="WorldBoundaries" type="Node2D" parent="World2D" unique_id=427137114]
-
-[node name="LeftBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1693929916]
-position = Vector2(192, 540)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/LeftBoundary" unique_id=1890711280]
-shape = SubResource("WorldBoundaryShape2D_mwb40")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/WorldBoundaries/LeftBoundary" unique_id=1599960728]
-position = Vector2(-128, 0)
-mesh = SubResource("QuadMesh_yqjtg")
-texture = SubResource("MeshTexture_uwrxv")
-
-[node name="RightBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1491809735]
-position = Vector2(1728, 540)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/RightBoundary" unique_id=1443445140]
-shape = SubResource("WorldBoundaryShape2D_80nbo")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/WorldBoundaries/RightBoundary" unique_id=219680618]
-position = Vector2(128, 0)
-mesh = SubResource("QuadMesh_lnu2h")
-texture = SubResource("MeshTexture_yqjtg")
-
-[node name="TopBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1906896732]
-position = Vector2(960, 108)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/TopBoundary" unique_id=278938599]
-shape = SubResource("WorldBoundaryShape2D_e2o6t")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/WorldBoundaries/TopBoundary" unique_id=713654431]
-position = Vector2(0, -64)
-mesh = SubResource("QuadMesh_iywne")
-texture = SubResource("MeshTexture_lnu2h")
-
-[node name="BottomBoundary" type="StaticBody2D" parent="World2D/WorldBoundaries" unique_id=1485238637]
-position = Vector2(960, 972)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/WorldBoundaries/BottomBoundary" unique_id=2034144866]
-shape = SubResource("WorldBoundaryShape2D_feb5d")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/WorldBoundaries/BottomBoundary" unique_id=1437122388]
-position = Vector2(0, 64)
-mesh = SubResource("QuadMesh_p57ef")
-texture = SubResource("MeshTexture_lbhrr")
-
-[node name="Islands" type="Node2D" parent="World2D" unique_id=1751236422]
-
-[node name="Countertop1" type="StaticBody2D" parent="World2D/Islands" unique_id=938574283]
-position = Vector2(480, 540)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/Islands/Countertop1" unique_id=2000791019]
-shape = SubResource("RectangleShape2D_lnu2h")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/Islands/Countertop1" unique_id=1458232409]
-mesh = SubResource("QuadMesh_lbhrr")
-texture = SubResource("MeshTexture_iywne")
-
-[node name="Countertop2" type="StaticBody2D" parent="World2D/Islands" unique_id=1941514330]
-position = Vector2(800, 540)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/Islands/Countertop2" unique_id=118819315]
-shape = SubResource("RectangleShape2D_lnu2h")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/Islands/Countertop2" unique_id=988352539]
-mesh = SubResource("QuadMesh_lbhrr")
-texture = SubResource("MeshTexture_p57ef")
-
-[node name="Countertop3" type="StaticBody2D" parent="World2D/Islands" unique_id=1184871799]
-position = Vector2(1120, 540)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/Islands/Countertop3" unique_id=1293672982]
-shape = SubResource("RectangleShape2D_lnu2h")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/Islands/Countertop3" unique_id=764764780]
-mesh = SubResource("QuadMesh_lbhrr")
-texture = SubResource("MeshTexture_u5sy4")
-
-[node name="Countertop4" type="StaticBody2D" parent="World2D/Islands" unique_id=408880298]
-position = Vector2(1440, 540)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World2D/Islands/Countertop4" unique_id=1000394016]
-shape = SubResource("RectangleShape2D_lnu2h")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="World2D/Islands/Countertop4" unique_id=474688053]
-mesh = SubResource("QuadMesh_lbhrr")
-texture = SubResource("MeshTexture_gee14")
+[node name="TileMapLayer" type="TileMapLayer" parent="World2D" unique_id=697754628]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAABQABAAAAAAAAAAAABQACAAAAAAAAAAAABQADAAAAAAAAAAAAAgAEAAAAAAAAAAAABQAFAAAAAAAAAAAAAgAGAAAAAAAAAAAABQAHAAAAAAAAAAAABAAIAAAAAAAAAAAABQAJAAAAAAAAAAAABQAKAAAAAAAAAAAAAgALAAAAAAAAAAAABQAMAAAAAAAAAAAAAgANAAAAAAAAAAAABQAOAAAAAAAAAAAABQAPAAAAAAAAAAAABQAPAAEAAAAAAAAABQAPAAIAAAAAAAAAAgAPAAMAAAAAAAAABQAPAAQAAAAAAAAAAgAPAAUAAAAAAAAABQAPAAYAAAAAAAAAAgAPAAcAAAAAAAAABQAPAAgAAAAAAAAABQAOAAgAAAAAAAAAAgANAAgAAAAAAAAABQAMAAgAAAAAAAAAAgALAAgAAAAAAAAABQAKAAgAAAAAAAAAAgAJAAgAAAAAAAAABQAIAAgAAAAAAAAAAwAHAAgAAAAAAAAABQAGAAgAAAAAAAAABQAFAAgAAAAAAAAAAgAEAAgAAAAAAAAABQADAAgAAAAAAAAAAgACAAgAAAAAAAAABQABAAgAAAAAAAAAAgAAAAgAAAAAAAAABQAAAAcAAAAAAAAABQAAAAYAAAAAAAAAAgAAAAUAAAAAAAAABQAAAAQAAAAAAAAAAgAAAAMAAAAAAAAABQAAAAIAAAAAAAAAAgAAAAEAAAAAAAAABQAGAAIAAAAAAAAABQAJAAIAAAAAAAAABQAMAAIAAAAAAAAABQADAAIAAAAAAAAABQADAAMAAAAAAAAAAQADAAQAAAAAAAAABQADAAUAAAAAAAAAAQADAAYAAAAAAAAABQAGAAYAAAAAAAAABQAGAAQAAAAAAAAABQAGAAMAAAAAAAAAAQAGAAUAAAAAAAAAAQAJAAMAAAAAAAAAAQAJAAQAAAAAAAAABQAJAAUAAAAAAAAAAQAJAAYAAAAAAAAABQAMAAYAAAAAAAAABQAMAAUAAAAAAAAAAQAMAAQAAAAAAAAABQAMAAMAAAAAAAAAAQD//wkAAAAAAAAABQD//wgAAAAAAAAABQD//wcAAAAAAAAABQD//wYAAAAAAAAABQD//wUAAAAAAAAABQD//wQAAAAAAAAABQD//wMAAAAAAAAABQD//wIAAAAAAAAABQD//wEAAAAAAAAABQD//wAAAAAAAAAABQD/////AAAAAAAABQAAAP//AAAAAAAABQABAP//AAAAAAAABQACAP//AAAAAAAABQADAP//AAAAAAAABQAEAP//AAAAAAAABQAFAP//AAAAAAAABQAGAP//AAAAAAAABQAHAP//AAAAAAAABQAIAP//AAAAAAAABQAJAP//AAAAAAAABQAKAP//AAAAAAAABQALAP//AAAAAAAABQANAP//AAAAAAAABQAOAP//AAAAAAAABQAPAP//AAAAAAAABQAMAP//AAAAAAAABQAQAP//AAAAAAAABQAQAAAAAAAAAAAABQAQAAEAAAAAAAAABQAQAAIAAAAAAAAABQAQAAMAAAAAAAAABQAQAAQAAAAAAAAABQAQAAUAAAAAAAAABQAQAAYAAAAAAAAABQAQAAcAAAAAAAAABQAQAAgAAAAAAAAABQAQAAkAAAAAAAAABQAPAAkAAAAAAAAABQAOAAkAAAAAAAAABQANAAkAAAAAAAAABQAMAAkAAAAAAAAABQALAAkAAAAAAAAABQAKAAkAAAAAAAAABQAJAAkAAAAAAAAABQAIAAkAAAAAAAAABQAHAAkAAAAAAAAABQAGAAkAAAAAAAAABQAFAAkAAAAAAAAABQAEAAkAAAAAAAAABQADAAkAAAAAAAAABQACAAkAAAAAAAAABQABAAkAAAAAAAAABQAAAAkAAAAAAAAABQA=")
+tile_set = SubResource("TileSet_0tnpc")
+script = ExtResource("7_gee14")
 
 [node name="Player" parent="World2D" unique_id=459094187 instance=ExtResource("1_uwrxv")]
 position = Vector2(960, 540)
 
-[node name="Machines" type="Node2D" parent="World2D" unique_id=1406392781]
-
-[node name="Machine" parent="World2D/Machines" unique_id=307354090 instance=ExtResource("2_yqjtg")]
-position = Vector2(480, 538)
-
-[node name="CommandFeed" parent="World2D/Machines" unique_id=1777718723 instance=ExtResource("3_lnu2h")]
-position = Vector2(960, 64)
-
 [node name="Timer" type="Timer" parent="." unique_id=1217195139]
 
-[node name="Label" type="Label" parent="." unique_id=1579661806]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Control" type="Control" parent="." unique_id=1969046156]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1889723393]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 83.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=1503471309]
+layout_mode = 2
+
+[node name="LabelLeft" type="Label" parent="Control/MarginContainer/HBoxContainer" unique_id=1579661806]
+layout_mode = 2
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Placeholder"
+
+[node name="VSeparator" type="VSeparator" parent="Control/MarginContainer/HBoxContainer" unique_id=387986456]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelRight" type="Label" parent="Control/MarginContainer/HBoxContainer" unique_id=1462194377]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Placeholder"
+horizontal_alignment = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
