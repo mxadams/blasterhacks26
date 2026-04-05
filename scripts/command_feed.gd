@@ -59,7 +59,7 @@ func _handle_player_interact():
 			Global.CMD_QUEUE.pop_front()
 
 func _on_timer_timeout():
-	var new_command = [0]
+	var new_command = []
 	for i in range(Global.GAMERULE.max_command_length):
 		new_command.append(randi_range(1, Global.COMPONENT.NUM_TYPES))
 	new_command.sort()
@@ -68,6 +68,6 @@ func _on_timer_timeout():
 	for value in new_command:
 		if unique_command.is_empty() or unique_command[-1] != value:
 			unique_command.append(value)
-			submit_command.append(value+10)
+			submit_command.append(value + 10)
 	Global.CMD_QUEUE.append(unique_command)
 	Global.SUBMIT_QUEUE.append(submit_command)

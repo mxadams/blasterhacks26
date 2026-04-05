@@ -15,7 +15,7 @@ func _ready():
 		child.output_index = index + 10
 		var children = child.get_children()
 		for i in children:
-			if i is Sprite2D:
-				i.texture = Global.COMPONENT.SPRITES[index]
+			if i is MeshInstance2D:
+				i.modulate = Color(Global.COMPONENT.COLORS[index % 10])
 		if index > 0:
 			index -= 1

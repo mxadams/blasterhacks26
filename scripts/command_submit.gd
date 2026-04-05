@@ -15,7 +15,7 @@ func _process(delta):
 			var parts = []
 			for arg in command:
 				var text = Global.COMPONENT.MAP[arg]
-				var color = Global.COMPONENT.COLORS[arg]
+				var color = Global.COMPONENT.COLORS[arg % 10]
 				parts.append("[color=%s]%s[/color]" % [color, text])
 			if label.text:
 				label.text += "\n" + " ".join(parts)
@@ -26,7 +26,7 @@ func _process(delta):
 			var parts = []
 			for arg in Global.SUBMIT_QUEUE[i]:
 				var text = Global.COMPONENT.MAP[arg]
-				var color = Global.COMPONENT.COLORS[arg]
+				var color = Global.COMPONENT.COLORS[arg % 10]
 				parts.append("[color=%s]%s[/color]" % [color, text])
 			if label.text:
 				label.text += "\n" + " ".join(parts)

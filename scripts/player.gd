@@ -4,11 +4,11 @@ extends CharacterBody2D
 
 var input_direction := Vector2.ZERO
 
-var carrying_index: int = -1
+var carrying_index: int = Global.COMPONENT.NULL_INDEX
 
 func _process(delta):
 	var text = Global.COMPONENT.MAP[carrying_index]
-	var color = Global.COMPONENT.COLORS[carrying_index]
+	var color = Global.COMPONENT.COLORS[carrying_index % 10]
 	label.text = "[color=%s]%s[/color]" % [color, text]
 
 func _physics_process(delta):

@@ -1,14 +1,5 @@
 extends Node
 
-const CACHE_STORAGE = preload("uid://ba7moxb5lk3hg")
-const MACHINE_ARGS = preload("uid://c4hg576et111m")
-const MACHINE_BIN = preload("uid://cftwdqrqd6tee")
-const MACHINE_FILE = preload("uid://b2fd55n82g2af")
-const MACHINE_FLAGS = preload("uid://bl3l8wxpmmnyr")
-const MACHINE_IO = preload("uid://bi48bhopw2x4q")
-const MACHINE_NET = preload("uid://45xpvfp7miu5")
-const WALL = preload("uid://bbe4ld36dyanf")
-
 var CMD_QUEUE = []
 var SUBMIT_QUEUE = []
 
@@ -19,46 +10,39 @@ var PLAYER := PlayerData.new()
 
 class ComponentData:
 	const ERROR_INDEX: int = -2
-	const NUM_TYPES: int = 5
+	const NULL_INDEX: int = -1
 	const MAP := {
 		ERROR_INDEX: "Hallucination",
-		-1: "NULL",
-		0: "[bin req]",
-		1: "[flag req]",
-		2: "[arg req]",
-		3: "[file req]",
-		4: "[net req]",
-		5: "[io req]",
-		10: "[bin ref]",
-		11: "[flags]",
-		12: "[args]",
-		13: "[file ref]",
-		14: "[net data]",
-		15: "[io data]",
+		NULL_INDEX: "NULL",
+		0: "ls",
+		1: "pwd",
+		2: "cd",
+		3: "mkdir",
+		4: "touch",
+		5: "mv",
+		6: "cat",
+		7: "man",
+		10: "ls [fin]",
+		11: "pwd [fin]",
+		12: "cd [fin]",
+		13: "mkdir [fin]",
+		14: "touch [fin]",
+		15: "mv [fin]",
+		16: "cat [fin]",
+		17: "man [fin]",
 	}
+	const NUM_TYPES: int = ((len(Global.COMPONENT.MAP) - 2)/2)-1
 	const COLORS := {
-		ERROR_INDEX: "ffffff",
-		-1: "ffffff",
-		0: "#b21818",
-		1: "#b26818",
-		2: "#18b218",
-		3: "#18b2b2",
-		4: "#1818b2",
-		5: "#b218b2",
-		10: "#ff5454",
-		11: "#ffff54",
-		12: "#54ff54",
-		13: "#54ffff",
-		14: "#5454ff",
-		15: "#ff54ff",
-	}
-	const SPRITES := {
-		0: MACHINE_BIN,
-		1: MACHINE_FLAGS,
-		2: MACHINE_ARGS,
-		3: MACHINE_FILE,
-		4: MACHINE_NET,
-		5: MACHINE_IO,
+		ERROR_INDEX: "#ffffff",
+		-1: "#ffffff",
+		0: "#ff0000",
+		1: "#ffff00",
+		2: "#00ff00",
+		3: "#00ffff",
+		4: "#0000ff",
+		5: "#ff00ff",
+		6: "#666666",
+		7: "#aaaaaa",
 	}
 var COMPONENT := ComponentData.new()
 
@@ -69,4 +53,5 @@ class GameRuleData:
 	const COMMAND_SPAWN_TIME: float = 10.0 # seconds
 	const DIFFICULTY_INCREASE_TIME: float = 20.0 # seconds
 	const PLAYER_SPEED_INCREASE: float = 0.004 * Global.PLAYER.MOVE_SPEED_BASE
+	const MAX_SUBMIT_LEN: int = 15
 var GAMERULE := GameRuleData.new()
