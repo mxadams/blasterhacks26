@@ -52,6 +52,6 @@ class GameRuleData:
 	var score: int = 0
 	const COMMAND_SPAWN_TIME: float = 10.0 # seconds
 	const DIFFICULTY_INCREASE_TIME: float = 15.0 # seconds
-	const PLAYER_SPEED_INCREASE: float = 0.01 * Global.PLAYER.MOVE_SPEED_BASE
-	const MAX_SUBMIT_LEN: int = 161239807
+	const PLAYER_SPEED_INCREASE: float = 1.01
+	const MAX_SUBMIT_LEN: int = 16
 var GAMERULE := GameRuleData.new()
