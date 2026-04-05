@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://emdbx70cebnd" path="res://scripts/machine.gd" id="1_73k52"]
 
+[sub_resource type="QuadMesh" id="QuadMesh_a5lir"]
+size = Vector2(120, 120)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4f25"]
 radius = 100.0
 
@@ -10,11 +13,11 @@ radius = 100.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73k52"]
 size = Vector2(120, 120)
 
-[sub_resource type="QuadMesh" id="QuadMesh_a5lir"]
-size = Vector2(120, 120)
-
 [node name="Machine" type="Area2D" unique_id=307354090]
 script = ExtResource("1_73k52")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=185585861]
+mesh = SubResource("QuadMesh_a5lir")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=288157467]
 shape = SubResource("CircleShape2D_i4f25")
@@ -54,8 +57,5 @@ vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=971193631]
 shape = SubResource("RectangleShape2D_73k52")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=185585861]
-mesh = SubResource("QuadMesh_a5lir")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
