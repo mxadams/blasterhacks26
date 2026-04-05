@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://cphf5avfpponk"]
 
 [ext_resource type="Script" uid="uid://cjtmjje71x52h" path="res://scripts/command_submit.gd" id="1_aw8sw"]
-[ext_resource type="Texture2D" uid="uid://cxpfpiutnlcfe" path="res://icon.svg" id="2_h5m1m"]
+[ext_resource type="AudioStream" uid="uid://dtkhcvp0tuahp" path="res://sounds/Interact.wav" id="2_aw8sw"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_7b6yv"]
+size = Vector2(120, 120)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ittqh"]
 radius = 100.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_guj83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw8sw"]
 size = Vector2(120, 120)
@@ -14,11 +15,11 @@ size = Vector2(120, 120)
 [node name="CommandSubmit" type="Area2D" unique_id=1894195832]
 script = ExtResource("1_aw8sw")
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1877608409]
+mesh = SubResource("QuadMesh_7b6yv")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=972323987]
 shape = SubResource("CircleShape2D_ittqh")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1086620965]
-texture = ExtResource("2_h5m1m")
 
 [node name="Control" type="Control" parent="." unique_id=2073191326]
 custom_minimum_size = Vector2(120, 120)
@@ -29,16 +30,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1619111210]
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1617414913]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_guj83")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="RichTextLabel" parent="Control/PanelContainer" unique_id=541620427]
+[node name="Label" type="RichTextLabel" parent="Control/MarginContainer" unique_id=541620427]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
@@ -53,3 +57,6 @@ vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2080926441]
 shape = SubResource("RectangleShape2D_aw8sw")
+
+[node name="InteractAudio" type="AudioStreamPlayer2D" parent="." unique_id=170582006]
+stream = ExtResource("2_aw8sw")

@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dtrebi3nc5gry"]
 
 [ext_resource type="Script" uid="uid://emdbx70cebnd" path="res://scripts/machine.gd" id="1_73k52"]
+[ext_resource type="AudioStream" uid="uid://dtkhcvp0tuahp" path="res://sounds/Interact.wav" id="2_i4f25"]
+[ext_resource type="AudioStream" uid="uid://b0raf1ow7fjn5" path="res://sounds/CompleteNormal.wav" id="3_hr233"]
+[ext_resource type="AudioStream" uid="uid://c7hdxi4cg1bfr" path="res://sounds/CompleteError.wav" id="4_eo4jl"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_a5lir"]
 size = Vector2(120, 120)
@@ -57,5 +60,14 @@ vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=971193631]
 shape = SubResource("RectangleShape2D_73k52")
+
+[node name="InteractAudio" type="AudioStreamPlayer2D" parent="." unique_id=1519119582]
+stream = ExtResource("2_i4f25")
+
+[node name="CompleteNormalAudio" type="AudioStreamPlayer2D" parent="." unique_id=1136571860]
+stream = ExtResource("3_hr233")
+
+[node name="CompleteErrorAudio" type="AudioStreamPlayer2D" parent="." unique_id=232322140]
+stream = ExtResource("4_eo4jl")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d2vh8yktb23et"]
+
+[ext_resource type="AudioStream" uid="uid://c81vdcte2ih4g" path="res://sounds/Bossa.mp3" id="1_83psx"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" unique_id=1496500460]
+stream = ExtResource("1_83psx")
+volume_db = -3.0
+autoplay = true
+parameters/looping = true

@@ -1,7 +1,10 @@
 extends Area2D
 
 @onready var timer: Timer = $Timer
-@onready var label = $Control/PanelContainer/Label
+@onready var mesh_instance_2d = $MeshInstance2D
+@onready var label = $Control/MarginContainer/Label
+@onready var pickup_audio = $PickupAudio
+@onready var interact_audio = $InteractAudio
 
 var player_node : Node = null
 
@@ -12,6 +15,7 @@ func _ready() -> void:
 	Global.SUBMIT_QUEUE.append([10])
 	timer.set_wait_time(Global.GAMERULE.COMMAND_SPAWN_TIME)
 	timer.start()
+	mesh_instance_2d.modulate = Color.WHITE
 
 func _process(delta):
 	label.text = ""
@@ -21,7 +25,7 @@ func _process(delta):
 			for arg in command:
 				var text = Global.COMPONENT.MAP[arg]
 				var color = Global.COMPONENT.COLORS[arg]
-				parts.append("[color=%s]%s[/color]" % [color, text])
+				parts.append("[b][color=%s]%s[/color][/b]" % [color, text])
 			if label.text:
 				label.text = " ".join(parts) + "\n" + label.text
 			else:
@@ -32,7 +36,7 @@ func _process(delta):
 			for arg in Global.CMD_QUEUE[i]:
 				var text = Global.COMPONENT.MAP[arg]
 				var color = Global.COMPONENT.COLORS[arg]
-				parts.append("[color=%s]%s[/color]" % [color, text])
+				parts.append("[b][color=%s]%s[/color][/b]" % [color, text])
 			if label.text:
 				label.text = " ".join(parts) + "\n" + label.text
 			else:
@@ -51,6 +55,7 @@ func _on_body_exited(body: Node) -> void:
 func _handle_player_interact():
 	if player_node and player_node.carrying_index == -1 and len(Global.CMD_QUEUE) > 0:
 		if Input.is_action_just_pressed("interact"):
+			pickup_audio.play()
 			var first_cmd = Global.CMD_QUEUE[0]
 			var chosen_idx = randi_range(0,len(first_cmd)-1)
 			var chosen_component = first_cmd.pop_at(chosen_idx)
@@ -71,3 +76,4 @@ func _on_timer_timeout():
 			submit_command.append(value + 10)
 	Global.CMD_QUEUE.append(unique_command)
 	Global.SUBMIT_QUEUE.append(submit_command)
+	pickup_audio.play()

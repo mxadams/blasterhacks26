@@ -33,16 +33,16 @@ class ComponentData:
 	}
 	const NUM_TYPES: int = ((len(Global.COMPONENT.MAP) - 2)/2)-1
 	const COLORS := {
-		ERROR_INDEX: "#ffffff",
+		ERROR_INDEX: "#ababab",
 		-1: "#ffffff",
-		0: "#ff0000",
-		1: "#ffff00",
-		2: "#00ff00",
-		3: "#00ffff",
-		4: "#0000ff",
-		5: "#ff00ff",
-		6: "#666666",
-		7: "#aaaaaa",
+		0: "#ea88a8",
+		1: "#eb9167",
+		2: "#c9a743",
+		3: "#88bc6b",
+		4: "#32c4ae",
+		5: "#3cbbe5",
+		6: "#8da6f9",
+		7: "#c892e0",
 	}
 var COMPONENT := ComponentData.new()
 
@@ -51,7 +51,7 @@ class GameRuleData:
 	var max_command_length: int = 1
 	var score: int = 0
 	const COMMAND_SPAWN_TIME: float = 10.0 # seconds
-	const DIFFICULTY_INCREASE_TIME: float = 20.0 # seconds
-	const PLAYER_SPEED_INCREASE: float = 0.004 * Global.PLAYER.MOVE_SPEED_BASE
-	const MAX_SUBMIT_LEN: int = 15
+	const DIFFICULTY_INCREASE_TIME: float = 15.0 # seconds
+	const PLAYER_SPEED_INCREASE: float = 0.01 * Global.PLAYER.MOVE_SPEED_BASE
+	const MAX_SUBMIT_LEN: int = 161239807
 var GAMERULE := GameRuleData.new()

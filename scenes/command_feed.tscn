@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://ru2x753o5p38"]
 
 [ext_resource type="Script" uid="uid://b0f3v2r1y5wxf" path="res://scripts/command_feed.gd" id="1_60ngb"]
-[ext_resource type="Texture2D" uid="uid://cxpfpiutnlcfe" path="res://icon.svg" id="2_gnlnk"]
+[ext_resource type="AudioStream" uid="uid://353o8u1hwduj" path="res://sounds/Pickup.wav" id="2_gnlnk"]
+[ext_resource type="AudioStream" uid="uid://dtkhcvp0tuahp" path="res://sounds/Interact.wav" id="3_u1bsx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_cbeqf"]
+size = Vector2(120, 120)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u1bsx"]
 radius = 100.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_60ngb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_60ngb"]
 size = Vector2(120, 120)
@@ -14,16 +16,16 @@ size = Vector2(120, 120)
 [node name="CommandFeed" type="Area2D" unique_id=1777718723]
 script = ExtResource("1_60ngb")
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=2014413358]
+mesh = SubResource("QuadMesh_cbeqf")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1749381014]
 shape = SubResource("CircleShape2D_u1bsx")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1404553355]
-texture = ExtResource("2_gnlnk")
 
 [node name="Timer" type="Timer" parent="." unique_id=15148212]
 
 [node name="Control" type="Control" parent="." unique_id=1836460316]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,16 +33,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=567984038]
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=760152103]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_60ngb")
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="RichTextLabel" parent="Control/PanelContainer" unique_id=600144904]
+[node name="Label" type="RichTextLabel" parent="Control/MarginContainer" unique_id=600144904]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
@@ -55,5 +60,11 @@ vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1795357134]
 shape = SubResource("RectangleShape2D_60ngb")
+
+[node name="PickupAudio" type="AudioStreamPlayer2D" parent="." unique_id=2065760901]
+stream = ExtResource("2_gnlnk")
+
+[node name="InteractAudio" type="AudioStreamPlayer2D" parent="." unique_id=622715181]
+stream = ExtResource("3_u1bsx")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
